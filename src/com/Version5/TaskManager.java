@@ -135,4 +135,30 @@ public class TaskManager {
         }
     }
 
+    public void viewTasksByCategory() {
+        Map<String, List<Task>> categoryMap = new HashMap<>();
+
+        for(Task task: tasks.values()){
+            for(String category: task.getCategories()){
+                if(!categoryMap.containsKey(category)){ // add category as index
+                    categoryMap.put(category, new ArrayList<>());
+                }
+                categoryMap.get(category).add(task);
+            }
+        }
+
+        for(Map.Entry<String, List<Task>> categoryTask: categoryMap.entrySet()){
+            System.out.println("\n------ Task under category : "+categoryTask.getKey()+" ------");
+            for(Task task: categoryTask.getValue()){
+                System.out.printf("Task ID: %-2d | Task Name: %-8s | Task description: %-10s | Task Due Date: %-10s | Task Priority: %-6s | Task Categories: %-10s\n",
+                        task.getTaskId(),
+                        task.getTaskName(),
+                        task.getTaskDescription(),
+                        dateToString(task.getDueDate()),
+                        task.getPriority(),
+                        setToString(task.getCategories())
+                );
+            }
+        }
+    }
 }
