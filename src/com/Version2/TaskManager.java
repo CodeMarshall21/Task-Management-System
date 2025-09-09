@@ -13,15 +13,20 @@ public class TaskManager {
     public void addTask() {
         System.out.print("Enter Task Name: ");
         String name = in.nextLine();
-        tasks.put(++counter, new Task(counter, name));
+
+        System.out.print("Enter Task Description: ");
+        String description = in.nextLine();
+
+        tasks.put(++counter, new Task(counter, name, description));
         System.out.println("Task Added Successfully !");
     }
 
     public void viewTasks() {
         for(Map.Entry<Integer, Task> task: tasks.entrySet()){
-            System.out.printf("Task ID: %-2d | Task Name: %-8s\n",
+            System.out.printf("Task ID: %-2d | Task Name: %-8s | Task description: %-10s\n",
                     task.getKey(),
-                    task.getValue().getTaskName()
+                    task.getValue().getTaskName(),
+                    task.getValue().getTaskDescription()
             );
         }
     }
