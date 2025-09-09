@@ -16,4 +16,7 @@ public class TaskManager {
         tasks.put(++counter, new Task(counter, name));
         System.out.println("Task Added Successfully !");
     }
+
+    public void viewTask() {
+    }
 }

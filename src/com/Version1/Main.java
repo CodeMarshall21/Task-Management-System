@@ -20,7 +20,8 @@ public class Main {
                     taskManager.addTask();
                     break;
                 case 2:
-                    System.out.println("Viewing Task...");
+                    System.out.println("Displaying all Tasks...");
+                    taskManager.viewTask();
                     break;
                 case 3:
                     System.out.println("Exited... See you soon !");
