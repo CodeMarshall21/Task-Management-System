@@ -23,9 +23,26 @@ public class TaskManager {
         }
 
         Priority priority = getPriority();
+        Set<String> categories = getCategories();
 
-        tasks.put(++counter, new Task(counter, name, description,dueDate,priority));
+        tasks.put(++counter, new Task(counter, name, description,dueDate,priority,categories));
         System.out.println("Task Added Successfully !");
+    }
+
+    private Set<String> getCategories() {
+        System.out.print("Enter Categories (Comma separated): ");
+        String categoriesInput = in.nextLine();
+        Set<String> categories = new HashSet<>();
+
+        String[] parts = categoriesInput.split(","); // to split categories based on ","
+        for(String part : parts){
+            String trimmed = part.trim(); // remove unwanted spaces
+            if(!trimmed.isEmpty()){ // if any unwanted commas given
+                categories.add(trimmed);
+            }
+        }
+        return categories;
+
     }
 
     private Priority getPriority() {
@@ -60,14 +77,19 @@ public class TaskManager {
 
     public void viewTasks() {
         for(Map.Entry<Integer, Task> task: tasks.entrySet()){
-            System.out.printf("Task ID: %-2d | Task Name: %-8s | Task description: %-30s | Task Due Date: %-10s | Task Priority: %-10s\n",
+            System.out.printf("Task ID: %-2d | Task Name: %-8s | Task description: %-10s | Task Due Date: %-10s | Task Priority: %-6s | Task Categories: %-10s\n",
                     task.getKey(),
                     task.getValue().getTaskName(),
                     task.getValue().getTaskDescription(),
                     dateToString(task.getValue().getDueDate()),
-                    task.getValue().getPriority()
+                    task.getValue().getPriority(),
+                    setToString(task.getValue().getCategories())
             );
         }
+    }
+
+    private String setToString(Set<String> categories) {
+        return String.join(", ",categories);
     }
 
     private String dateToString(Date date) {
