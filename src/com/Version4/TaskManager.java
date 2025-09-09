@@ -25,8 +25,23 @@ public class TaskManager {
             dueDate = getDate();
         }
 
-        tasks.put(++counter, new Task(counter, name, description,dueDate));
+        Priority priority = getPriority();
+
+        tasks.put(++counter, new Task(counter, name, description,dueDate,priority));
         System.out.println("Task Added Successfully !");
+    }
+
+    private Priority getPriority() {
+        System.out.print("Enter Task Priority (HIGH /MEDIUM/ LOW): ");
+        String strPriority = in.next().toUpperCase();
+        try{    //might get runtime error
+            in.nextLine();
+            return Priority.valueOf(strPriority); // convert string -> Priority type using valueOf()
+        }catch(IllegalArgumentException e){
+            System.out.println("Invalid Priority ! Defaulting to medium...");
+            return Priority.MEDIUM;
+        }
+
     }
 
     private Date getDate(){
