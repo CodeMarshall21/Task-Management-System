@@ -2,10 +2,7 @@ package com.Version4;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class TaskManager {
 
@@ -78,4 +75,42 @@ public class TaskManager {
         String dueDate = dateFormat.format(date);
         return dueDate;
     }
+
+    public void viewTasksByPriority() {
+        Map<Priority, List<Task>> taskByPriority = new HashMap<>();
+
+        // Adding keys to the hashmap, which is adding Priority first
+        for(Priority priority: Priority.values()){
+            taskByPriority.put(priority,new ArrayList<>());
+        }
+
+        // now add the tasks according to the priority
+        for(Task task: tasks.values()){
+            taskByPriority.get(task.getPriority()).add(task);
+        }
+
+        //CALLING THE FUNCTION WHICH PRINTS TASK BY PRIORITY
+
+        viewTasks("HIGH", taskByPriority.get(Priority.HIGH)); // send the priority and the tasks associated to the respective priority
+        viewTasks("MEDIUM", taskByPriority.get(Priority.MEDIUM)); // send the priority and the tasks associated to the respective priority
+        viewTasks("LOW", taskByPriority.get(Priority.LOW)); // send the priority and the tasks associated to the respective priority
+    }
+
+    //Method overloading to print tasks by priority
+
+    public void viewTasks(String priority, List<Task>tasks) {
+        if(!tasks.isEmpty()) {  // do not print if the priority has no tasks
+            System.out.println("\n-------- "+priority+" Priority Tasks --------\n");
+            for (Task task : tasks) {   // the priority and its associate tasks are sent here, and we traverse them
+                System.out.printf("Task ID: %-2d | Task Name: %-8s | Task description: %-30s | Task Due Date: %-10s | Task Priority: %-10s\n",
+                        task.getTaskId(),
+                        task.getTaskName(),
+                        task.getTaskDescription(),
+                        dateToString(task.getDueDate()),
+                        task.getPriority()
+                );
+            }
+        }
+    }
+
 }

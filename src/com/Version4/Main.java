@@ -10,7 +10,7 @@ public class Main {
         System.out.println("Welcome");
         boolean isRunning = true;
         while(isRunning){
-            System.out.println("\n1. Add Task \n2. View Task \n3. Exit");
+            System.out.println("\n1. Add Task \n2. View Task \n3. View Task By Priority \n4. Exit");
             System.out.print("Enter Choice: ");
             int choice = in.nextInt();
 
@@ -24,6 +24,10 @@ public class Main {
                     taskManager.viewTasks();
                     break;
                 case 3:
+                    System.out.println("Displaying all Tasks By Priority...");
+                    taskManager.viewTasksByPriority();
+                    break;
+                case 4:
                     System.out.println("Exited... See you soon !");
                     isRunning = false;
             }
