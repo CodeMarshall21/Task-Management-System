@@ -28,6 +28,6 @@ public class Main {
                     isRunning = false;
             }
         }
-
+        in.close();
     }
 }
