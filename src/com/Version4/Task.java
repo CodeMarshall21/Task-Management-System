@@ -7,12 +7,18 @@ public class Task {
     private String taskName;
     private String taskDescription;
     private Date dueDate;
+    private Priority priority;
 
-    public Task(int id, String task, String description, Date date){
+    public Task(int id, String task, String description, Date date, Priority priority){
         this.taskId = id;
         this.taskName = task;
         this.taskDescription = description;
         dueDate = date;
+        this.priority = priority;
+    }
+
+    public int getTaskId(){
+        return taskId;
     }
 
     public String getTaskName() {
@@ -25,5 +31,9 @@ public class Task {
 
     public Date getDueDate() {
         return dueDate;
+    }
+
+    public Priority getPriority(){
+        return priority;
     }
 }
