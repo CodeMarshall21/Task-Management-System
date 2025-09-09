@@ -63,11 +63,12 @@ public class TaskManager {
 
     public void viewTasks() {
         for(Map.Entry<Integer, Task> task: tasks.entrySet()){
-            System.out.printf("Task ID: %-2d | Task Name: %-8s | Task description: %-10s | Task Due Date: %-10s\n",
+            System.out.printf("Task ID: %-2d | Task Name: %-8s | Task description: %-30s | Task Due Date: %-10s | Task Priority: %-10s\n",
                     task.getKey(),
                     task.getValue().getTaskName(),
                     task.getValue().getTaskDescription(),
-                    dateToString(task.getValue().getDueDate())
+                    dateToString(task.getValue().getDueDate()),
+                    task.getValue().getPriority()
             );
         }
     }
