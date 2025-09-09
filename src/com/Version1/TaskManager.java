@@ -18,5 +18,11 @@ public class TaskManager {
     }
 
     public void viewTasks() {
+        for(Map.Entry<Integer, Task> task: tasks.entrySet()){
+            System.out.printf("Task ID: %-2d | Task Name: %-8s\n",
+                    task.getKey(),
+                    task.getValue().getTaskName()
+            );
+        }
     }
 }
