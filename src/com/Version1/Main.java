@@ -21,7 +21,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Displaying all Tasks...");
-                    taskManager.viewTask();
+                    taskManager.viewTasks();
                     break;
                 case 3:
                     System.out.println("Exited... See you soon !");

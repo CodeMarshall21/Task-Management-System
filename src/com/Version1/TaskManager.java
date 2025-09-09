@@ -17,6 +17,6 @@ public class TaskManager {
         System.out.println("Task Added Successfully !");
     }
 
-    public void viewTask() {
+    public void viewTasks() {
     }
 }
