@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        TaskManager tasks = new TaskManager();
+        TaskManager taskManager = new TaskManager();
 
         Scanner in = new Scanner(System.in);
         System.out.println("Welcome");
@@ -17,7 +17,7 @@ public class Main {
             switch(choice){
                 case 1:
                     System.out.println("Adding Task...");
-
+                    taskManager.addTask();
                     break;
                 case 2:
                     System.out.println("Viewing Task...");
